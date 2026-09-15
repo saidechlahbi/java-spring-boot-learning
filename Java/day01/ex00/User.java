@@ -10,8 +10,10 @@ public class User
         {
             throw new IllegalArgumentException("Initial balance cannot be negative");
         }
+        Identifier = id;
+        Name = name;
+        Balance = balance;
     }
-    ~User();
     public void setID(int id)
     {
         Identifier = id;
@@ -27,9 +29,9 @@ public class User
 
     public int getID()
     {
-        return identifier;
+        return Identifier;
     }
-    public String getNAME()
+    public String getName()
     {
         return Name;
     }
@@ -38,4 +40,8 @@ public class User
         return Balance;
     }
 
+    @Override 
+    public String toString() {
+        return "User{id=" + Identifier + ", name='" + Name + "', balance=" + Balance + "}";
+    }
 }
