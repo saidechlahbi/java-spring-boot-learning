@@ -1,4 +1,3 @@
-import java.nio.file.attribute.UserPrincipalNotFoundException;
 
 public class UsersArrayList implements UsersList{
     private User[] users;
@@ -27,13 +26,13 @@ public class UsersArrayList implements UsersList{
             if (users[i].getID() == id)
                     return  users[i];
         }
-        throw UserNotFoundException("user with id = " + id + " not found");
+        throw new UserNotFoundException("user with id = " + id + " not found");
     }
     @Override 
     public User RetrieveUserbyIndex(int index)
     {
         if (index < 0 || index >= size)
-            throw UserPrincipalNotFoundException("user with index = " + index + " not found");
+            throw new UserNotFoundException("user with index = " + index + " not found");
         return users[index];
     }
     @Override 
