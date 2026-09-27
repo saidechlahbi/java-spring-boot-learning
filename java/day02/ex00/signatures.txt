@@ -1,1 +1,2 @@
-hello im ready to solve the first exercice in day 02 in java modules im working on IO files streaming conceptsim trying to solve this shit    
+PNG, 89 50 4E 47 0D 0A 1A 0A
+GIF, 47 49 46 38 37 61
