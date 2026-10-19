@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Preprocessors -->
+    <bean id="upper"
+          class="school42.spring.preprocessors.PreProcessorToUpperImpl"/>
+
+    <bean id="lower"
+          class="school42.spring.preprocessors.PreProcessorToLowerImpl"/>
+
+    <!-- Renderers -->
+    <bean id="standardRenderer"
+          class="school42.spring.renderers.RendererStandardImpl">
+        <constructor-arg ref="upper"/>
+    </bean>
+
+    <bean id="errorRenderer"
+          class="school42.spring.renderers.RendererErrImpl">
+        <constructor-arg ref="lower"/>
+    </bean>
+
+    <!-- Printers -->
+    <bean id="printerWithPrefix"
+          class="school42.spring.printers.PrinterWithPrefixImpl">
+        <constructor-arg ref="standardRenderer"/>
+        <property name="prefix" value="School42"/>
+    </bean>
+
+    <bean id="printerWithDateTime"
+          class="school42.spring.printers.PrinterWithDateTimeImpl">
+        <constructor-arg ref="errorRenderer"/>
+    </bean>
+
+</beans>
