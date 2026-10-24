@@ -16,7 +16,7 @@ public class Task {
 
     @Id // pramiry key katkhalih ytjinirita automatique
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;    
 
     @Column(nullable = false, length = 150)
     private String title;
@@ -27,7 +27,12 @@ public class Task {
     @Column(nullable = false, length = 20)
     private String status = "TODO";
 
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(
+        name = "created_at",
+        nullable = false,
+        updatable = false,
+        insertable = false
+    )
     private LocalDateTime createdAt;
 
     public Task() {
