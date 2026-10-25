@@ -7,7 +7,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import org.hibernate.annotations.Generated;
 import java.time.LocalDateTime;
 
 @Entity  // kat9ol l JPA java persistence api hada class katrepresonti task table 
@@ -18,6 +20,8 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;    
 
+    @NotBlank(message = "Title cannot be blank")
+    @Size(max = 150, message = "Title must not exceed 150 characters")
     @Column(nullable = false, length = 150)
     private String title;
 
@@ -27,6 +31,7 @@ public class Task {
     @Column(nullable = false, length = 20)
     private String status = "TODO";
 
+    @Generated
     @Column(
         name = "created_at",
         nullable = false,
